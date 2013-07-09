@@ -9,7 +9,7 @@
 /* colours */
 /* page structure - written in neat */
 .header {
-  background: url(<%= stylesheets 'Pitch4.jpg' %>) no-repeat;
+  background: url(Pitch4.jpg) no-repeat;
   /* Fallback for web browsers that don't support RGBa */
   background-color: black;
   /* RGBa with 0.6 opacity */
@@ -381,9 +381,8 @@ a.wikipedia:hover{
 
 @font-face {
   font-family: 'icons';
-
-  src: url(<%= stylesheets 'icons/font/icons.eot?69332979' %>);
-  src: url(<%= stylesheets 'icons/font/icons.eot?69332979#iefix' %>) format("embedded-opentype"), url(<%= stylesheets 'icons/font/icons.woff?69332979' %>) format("woff"), url(<%= stylesheets 'icons/font/icons.ttf?69332979' %>) format("truetype"), url(<%= stylesheets 'icons/font/icons.svg?69332979' %>) format("svg");
+  src: url("icons/font/icons.eot?69332979");
+  src: url("icons/font/icons.eot?69332979#iefix") format("embedded-opentype"), url("icons/font/icons.woff?69332979") format("woff"), url("icons/font/icons.ttf?69332979") format("truetype"), url("icons/font/icons.svg?69332979#icons") format("svg");
   font-weight: normal;
   font-style: normal; }
 
