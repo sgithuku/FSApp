@@ -9,7 +9,7 @@
 /* colours */
 /* page structure - written in neat */
 .header {
-  background: url(Pitch4.jpg) no-repeat;
+  background: url(../public/Pitch4.jpg) no-repeat;
   /* Fallback for web browsers that don't support RGBa */
   background-color: black;
   /* RGBa with 0.6 opacity */
