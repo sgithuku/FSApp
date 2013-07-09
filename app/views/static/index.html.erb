@@ -1,0 +1,48 @@
+<script type="text/x-handlebars">
+  <div id="container">
+        <div class="header">
+          <h1 class="page-header"><a id="pentagon" href="index.html">FS</a></h1>
+          <h2>The quickest way to find out more about football players everywhere. </h2>
+        <div class="holder">
+          <section class="searchselect">
+            {{view Ember.Select contentBinding="App.Teams" optionValuePath="content.id" optionLabelPath="content.realteam" selectionBinding="App.Teams.selectedTeam" nameBinding="pretty" }}
+          </section>        
+          <section class="searchbox">
+            {{view App.SearchTextField placeholder="Search for a player" valueBinding="App.searchResultsController.query"}}
+            <button {{action "authenticate" target="App.searchResultsController"}} class="btn btn-large"><i class="icon-search-2"></i></button>
+          </section>
+        </div>
+      </div>
+
+    <div id="content">
+    <h3><i class="icon-twitter"></i>  What is twitter saying?</h3>
+      {{#each App.searchResultsController.reverse}}
+          <ul class="tile">
+            <li>              
+              <ol class="tweets">
+                <p>{{linkify text}}</p>
+              </ol>
+              <ol class="screen_name"><h4>{{ user.screen_name }}</h4></ol>
+            </li>
+          </ul>
+          {{/each}}
+    </div>
+    <div id="videoholder">
+    <h3><i class="icon-videocam"></i>  Youtube clips {{#if App.searchResultsController }}of {{App.searchResultsController.query}} {{/if}}</h3>
+          <div id="videostretch" >
+            <iframe id="video" width="640" height="360" border="0" frameBorder="0" ></iframe>
+          </div>
+    </div>
+
+    <div id="wikipedia">
+    <h3><i class="icon-laptop"></i> What does Wikipedia say?</h3>
+    {{#if App.searchResultsController}}
+      {{{link "Find out more about " "http://en.wikipedia.org/wiki/Special:Search/" "wikipedia" }}}
+    {{/if}}
+    </div>
+
+    <footer>
+      <p>Have some ideas about how this could be better? Tweet me <a href="http://twitter.com/shaun_g" target="_blank">@shaun_g</a></p>
+    </footer>
+  </div>
+</script>

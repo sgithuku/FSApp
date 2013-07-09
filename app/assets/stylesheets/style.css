@@ -1,0 +1,458 @@
+@charset "UTF-8";
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,700);
+/* css file */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/* colours */
+/* page structure - written in neat */
+.header {
+  background: url(Pitch4.jpg) no-repeat;
+  /* Fallback for web browsers that don't support RGBa */
+  background-color: black;
+  /* RGBa with 0.6 opacity */
+  background-color: rgba(0, 0, 0, 0.5);
+  /* For IE 5.5 - 7*/
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+  /* For IE 8*/
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)"; }
+  .header .holder {
+    *zoom: 1;
+    max-width: 68em;
+    margin-left: auto;
+    margin-right: auto;
+    *zoom: 1;
+    display: block; }
+    .header .holder:before, .header .holder:after {
+      content: " ";
+      display: table; }
+    .header .holder:after {
+      clear: both; }
+    .header .holder:before, .header .holder:after {
+      content: " ";
+      display: table; }
+    .header .holder:after {
+      clear: both; }
+    .header .holder section.searchselect {
+      display: block;
+      float: left;
+      margin-right: 2.35765%;
+      width: 100%; }
+      .header .holder section.searchselect:last-child {
+        margin-right: 0; }
+    .header .holder section.searchbox {
+      display: block;
+      float: left;
+      margin-right: 2.35765%;
+      width: 100%; }
+      .header .holder section.searchbox:last-child {
+        margin-right: 0; }
+
+/* key styling */
+#container {
+  width: 100%; }
+
+.header, #videoholder {
+  display: block;
+  clear: both;
+  width: 100%;
+  position: relative;
+  float: left;
+  width: 100%;
+  padding: 2.35765%; }
+
+.header {
+  min-height: 520px;
+  background-color: #67bf95;
+  border-bottom: 6px solid #347c5a;
+  color: #fafafa; }
+
+#content {
+  min-height: 20px;
+  display: block;
+  clear: both;
+  width: 100%;
+  position: relative;
+  float: left;
+  width: 100%;
+  padding: 2.35765%;
+  background-color: #374953;
+  border-bottom: 6px solid #7e9aa9;
+  color: #347c5a; }
+
+#videoholder {
+  min-height: 20px;
+  background-color: #292929;
+  position: relative; }
+
+#wikipedia {
+  min-height: 20px;
+  display: block;
+  clear: both;
+  width: 100%;
+  position: relative;
+  float: left;
+  width: 100%;
+  padding: 2.35765%;
+  background-color: #374953;
+  border-top: 6px solid #7e9aa9; }
+
+footer {
+  background-color: #67bf95;
+  border-top: 6px solid #347c5a;
+  color: #292929;
+  padding: 40px 0px;
+  font-size: 24px;
+  display: block;
+  position: relative;
+  clear: both; }
+
+body {
+  color: #fafafa;
+  font: 14px/1.231 "Lato", sans-serif;
+  margin: 0 !important; }
+
+a {
+  color: #67bf95;
+  /* green: #1abc9c */
+  text-decoration: none;
+  -webkit-transition: 0.25s;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  transition: 0.25s;
+  -webkit-backface-visibility: hidden; }
+
+a:hover {
+  color: #347c5a;
+  /* lighter green: 2ecc71; */
+  text-decoration: none; }
+
+h1 {
+  font-size: 60px;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 5%;
+  line-height: 0.6;
+  padding-bottom: 0; }
+
+h1 a {
+  background: #67bf95;
+  color: #fff;
+  padding: 20px;
+  box-shadow: 6px 6px 0 #347c5a;
+  -moz-box-shadow: 6px 6px 0 #347c5a;
+  -webkit-box-shadow: 6px 6px 0 #347c5a;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%; }
+
+h1 a:hover {
+  background: #67bf95;
+  color: #347c5a;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  box-shadow: 3px 3px 0 #347c5a;
+  -moz-box-shadow: 3px 3px 0 #347c5a;
+  -webkit-box-shadow: 3px 3px 0 #347c5a; }
+
+h2 {
+  font-size: 26px;
+  font-weight: 100;
+  margin-bottom: 2px;
+  text-align: center;
+  padding-top: 20px; }
+
+h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  margin-top: 2px;
+  text-align: center;
+  text-transform: uppercase; }
+
+h4 {
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 4px; }
+
+h5 {
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase; }
+
+h6 {
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase; }
+
+footer p {
+  text-align: center;
+  line-height: 1.5; }
+
+footer a {
+  color: #fafafa; }
+
+.holder {
+  margin-top: 7.5%; }
+
+/* form styling */
+input {
+  font: 1em Lato, sans-serif;
+  padding: 0 0 0 10px;
+  vertical-align: baseline;
+  display: inline;
+  color: #347c5a;
+  min-width: 320px;
+  width: 80%;
+  line-height: 1.65;
+  font-size: 24px;
+  border: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  float: left;
+  background-color: white;
+  /* RGBa with 0.6 opacity */
+  background-color: rgba(255, 255, 255, 0.5);
+  /* For IE 5.5 - 7*/
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+  /* For IE 8*/
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)"; }
+
+::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #347c5a; }
+
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #347c5a; }
+
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #347c5a; }
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #347c5a; }
+
+select {
+  /* This is the default class that is used */
+  /* Put whatever custom styles you want here */
+  font: 1em "Lato", sans-serif;
+  width: 100%;
+  min-width: 320px;
+  line-height: 1.65;
+  font-size: 24px;
+  font-weight: 100;
+  background: #347c5a url(down-arrow.png) top right no-repeat;
+  color: #fafafa;
+  outline: none;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 0 10px;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  text-align: center;
+  font-weight: 100;
+  margin-bottom: 20px; }
+
+/* tiles */
+#content h3, #videostretch h3 {
+  color: #fafafa; }
+
+ul, li, ol {
+  list-style: none;
+  list-style-type: none; }
+
+li {
+  position: relative;
+  float: left;
+  display: inline;
+  width: 240px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  background: #fafafa;
+  color: #7e9aa9;
+  text-align: left; }
+
+ol {
+  margin: 0;
+  padding: 0; }
+
+ol.tweets {
+  display: block;
+  height: 120px; }
+
+ol.screen_name {
+  display: block;
+  height: 30px;
+  background: #7e9aa9; }
+
+li ol p {
+  padding: 20px; }
+
+li ol img {
+  border-radius: 50%; }
+
+li ol h4 {
+  color: #fafafa;
+  width: 100%;
+  clear: both;
+  text-align: center;
+  line-height: 1.5; }
+
+/* buttons */
+.btn {
+  border: 0px solid #67bf95;
+  background-color: #347c5a;
+  color: #fafafa;
+  font-weight: 100;
+  text-decoration: none;
+  text-shadow: none;
+  -webkit-transition: 0.25s;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  transition: 0.25s;
+  -webkit-backface-visibility: hidden;
+  width: 20%;
+  float: left;
+  display: inline;
+  margin: 0 !important; }
+
+.btn:hover, .btn:focus {
+  border: 0px solid #347c5a;
+  background-color: #67bf95;
+  color: #347c5a;
+  -webkit-transition: 0.25s;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  transition: 0.25s;
+  -webkit-backface-visibility: hidden; }
+
+.btn:active, .btn.active {
+  background-color: #347c5a;
+  color: rgba(255, 255, 255, 0.75);
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none; }
+
+.btn.btn-large {
+  font-size: 24px;
+  text-transform: lowercase;
+  line-height: 1.47; }
+
+/* autofit video */
+#videostretch {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 25px;
+  height: 0;
+  width: 80%;
+  margin: 0 auto; }
+
+#videostretch iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+
+a.wikipedia {
+  padding: 30px;
+  background: #347c5a;
+  color: #fafafa;
+  text-align: center;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  display: block;
+  width: 50%;
+  margin: 10px auto;
+  font-weight: 300;
+  font-size: 24px; }
+
+a.wikipedia:hover{
+  background: #67bf95; }
+
+@font-face {
+  font-family: 'icons';
+  src: url("icons/font/icons.eot?69332979");
+  src: url("icons/font/icons.eot?69332979#iefix") format("embedded-opentype"), url("icons/font/icons.woff?69332979") format("woff"), url("icons/font/icons.ttf?69332979") format("truetype"), url("icons/font/icons.svg?69332979#icons") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'icons';
+    src: url('../font/icons.svg?69332979#icons') format('svg');
+  }
+}
+*/
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "icons";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
+
+.icon-wikipedia:before {
+  content: '\e808'; }
+
+/* '' */
+.icon-twitter:before {
+  content: '\e803'; }
+
+/* '' */
+.icon-search-1:before {
+  content: '\e801'; }
+
+/* '' */
+.icon-spin6:before {
+  content: '\e804'; }
+
+/* '' */
+.icon-down-open:before {
+  content: '\e802'; }
+
+/* '' */
+.icon-laptop:before {
+  content: '\e807'; }
+
+/* '' */
+.icon-videocam:before {
+  content: '\e805'; }
+
+/* '' */
+.icon-search-2:before {
+  content: '\e806'; }
+
+/* '' */
+.icon-search:before {
+  content: '\e800'; }
+
+/* '' */

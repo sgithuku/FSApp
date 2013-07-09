@@ -13,4 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require handlebars
+//= require ember
+//= require_self
+//= require codebird
+//= require sha1
+//= require app
+
+// for more details see: http://emberjs.com/guides/application/
+
