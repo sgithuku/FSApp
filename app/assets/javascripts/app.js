@@ -73,8 +73,6 @@ App.searchResultsController=Em.ArrayController.createWithMixins({
             this.pushObject(tweet);
             this._idCache[id] = tweet.id;
         }
-
-    
     },
 
     reverse:function(){
@@ -89,6 +87,7 @@ App.searchResultsController=Em.ArrayController.createWithMixins({
         if (content.length > 0){
             content.clear() && this.removeString(query);
         }
+
         var cb = new Codebird;
         var self=this;
         var query=self.get("query");
