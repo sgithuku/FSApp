@@ -44,7 +44,7 @@ App.SearchTextField=Em.TextField.extend({
             var value = this.get('value');
             if (value) {
                 App.searchResultsController.authenticate(value);
-                this.set('value', '');
+                this.set('value', App.searchResultsController.query);
             }
         }
 });
@@ -57,7 +57,6 @@ App.TweetCountView=Ember.View.extend({
 /**************************
 * Controller
 **************************/
-
 App.searchResultsController=Em.ArrayController.createWithMixins({
     content:[],
     _idCache: {},
@@ -87,23 +86,26 @@ App.searchResultsController=Em.ArrayController.createWithMixins({
     // }
 
     authenticate: function(){
-
         if (content.length > 0){
-            content.clear() && this.removeString(query)
+            content.clear() && this.removeString(query);
         }
         var cb = new Codebird;
         var self=this;
         var query=self.get("query");
         cb.setConsumerKey('bJZupffcmbMpeC0GhromA','QbE611TJ1IbmVQ0rsVJcS2ars5PonaYfnyDsc6NcQbo');
+        document.getElementById("loading").style.display="block";        
+        document.getElementById("videostretch").style.paddingBottom="56.25%";
         cb.__call(
             'search_tweets',
             'q='+query+" "+App.Teams.selectedTeam.realteam+"&count=15&include_entities=true&result_type=popular&lang=en",
             function(reply){
+                
                 for (var i = 0; i < reply.statuses.length; i++) 
                                         {
-                                            self.addTweet(App.Tweet.create(
-                                                reply.statuses[i]));
+                                            self.addTweet(App.Tweet.create(reply.statuses[i]));
                                         }
+                document.getElementById("loading").style.display="none";
+
             },
             true
         );

@@ -1,7 +1,7 @@
 <script type="text/x-handlebars">
   <div id="container">
         <div class="header">
-          <h1 class="page-header"><a id="pentagon" href="/">FS</a></h1>
+          <h1 class="page-header">{{#linkTo 'index'}}FS{{/linkTo}}</h1>
           <h2>The quickest way to find out more about football players everywhere. </h2>
         <div class="holder">
           <section class="searchselect">
@@ -15,21 +15,27 @@
       </div>
 
     <div id="content">
-    <h3><i class="icon-twitter"></i>  What is twitter saying?</h3>
-      {{#each App.searchResultsController.reverse}}
-          <ul class="tile">
-            <li>              
-              <ol class="tweets">
-                <p>{{linkify text}}</p>
-              </ol>
-              <ol class="screen_name"><h4>{{ user.screen_name }}</h4></ol>
-            </li>
-          </ul>
-          {{/each}}
+
+      <div id="loading" style="display:none">
+        <h2>loading tweets...</h2>
+      </div>
+
+      <h3><i class="icon-twitter"></i>  What is twitter saying?</h3>
+        {{#each App.searchResultsController.reverse}}
+            <ul class="tile">
+              <li>              
+                <ol class="tweets">
+                  <p>{{linkify text}}</p>
+                </ol>
+                <ol class="screen_name"><h4>{{ user.screen_name }}</h4></ol>
+              </li>
+            </ul>
+        {{/each}}
+
     </div>
     <div id="videoholder">
     <h3><i class="icon-videocam"></i>  Youtube clips {{#if App.searchResultsController }}of {{App.searchResultsController.query}} {{/if}}</h3>
-          <div id="videostretch" >
+          <div id="videostretch" style="padding-bottom: 0;" >
             <iframe id="video" width="640" height="360" border="0" frameBorder="0" ></iframe>
           </div>
     </div>
