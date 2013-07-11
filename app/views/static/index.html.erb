@@ -8,9 +8,17 @@
             {{view Ember.Select contentBinding="App.Teams" optionValuePath="content.id" optionLabelPath="content.realteam" selectionBinding="App.Teams.selectedTeam" nameBinding="pretty" }}
           </section>        
           <section class="searchbox">
-            {{view App.SearchTextField placeholder="Search for a player" valueBinding="App.searchResultsController.query"}}
+            {{view App.SearchTextField placeholder="Search for a football player" valueBinding="App.searchResultsController.query"}}
             <button {{action "authenticate" target="App.searchResultsController"}} class="btn btn-large"><i class="icon-search-2"></i></button>
           </section>
+
+          <section>
+            {{#view App.Autocomplete valueBinding="person" controllerBinding="controllers.autocomplete"}}
+              {{content.name}}
+            {{/view}}
+          </section>
+
+
         </div>
       </div>
 
