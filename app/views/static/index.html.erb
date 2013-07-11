@@ -1,24 +1,16 @@
 <script type="text/x-handlebars">
   <div id="container">
         <div class="header">
-          <h1 class="page-header"><a id="pentagon" href="http://www.footballersearch.com">FS</a></h1>
+          <h1 class="page-header"><a id="pentagon" href="/">FS</a></h1>
           <h2>The quickest way to find out more about football players everywhere. </h2>
         <div class="holder">
           <section class="searchselect">
             {{view Ember.Select contentBinding="App.Teams" optionValuePath="content.id" optionLabelPath="content.realteam" selectionBinding="App.Teams.selectedTeam" nameBinding="pretty" }}
           </section>        
           <section class="searchbox">
-            {{view App.SearchTextField placeholder="Search for a football player" valueBinding="App.searchResultsController.query"}}
+            {{view App.SearchTextField placeholder="Search for a football player" valueBinding="App.searchResultsController.query" action="authenticate" target="App.searchResultsController" }}
             <button {{action "authenticate" target="App.searchResultsController"}} class="btn btn-large"><i class="icon-search-2"></i></button>
           </section>
-
-          <section>
-            {{#view App.Autocomplete valueBinding="person" controllerBinding="controllers.autocomplete"}}
-              {{content.name}}
-            {{/view}}
-          </section>
-
-
         </div>
       </div>
 
