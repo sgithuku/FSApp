@@ -1,4 +1,5 @@
 App = Ember.Application.create();
+Ember.LOG_BINDINGS = true;
 
 App.Teams = [
         Ember.Object.create({id:1, team:'arsenal',realteam:'Arsenal'}),
@@ -131,6 +132,9 @@ Ember.Handlebars.registerBoundHelper('linkify', function (text) {
     text = text.replace(/(^|)@(\w+)/gi, function (s) {
         return '<a target="_blank" href="http://twitter.com/' + s + '">' + s + '</a>';
     });
+    // text = text.replace(/(^|)#(\w+)/gi, function (s) {
+    //         return '<a href="http://search.twitter.com/search?q=' + s.replace(/#/,'%23') + '">' + s + '</a>';
+    //      });
     return new Handlebars.SafeString(text);
 });
 
@@ -145,3 +149,11 @@ Handlebars.registerHelper('link', function(text, url, style, source) {
 
   return result;
 });
+
+Ember.Handlebars.registerBoundHelper('twitter_user', function (text) {
+    text = text.replace(/.*/g, function (s) {
+        return '<a target="_blank" href="http://twitter.com/' + s + '">' + s + '</a>';
+    });
+    return new Handlebars.SafeString(text);
+});
+

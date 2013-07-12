@@ -1,4 +1,5 @@
 <script type="text/x-handlebars">
+mixpanel.track("Main container");
   <div id="container">
         <div class="header">
           <h1 class="page-header">{{#linkTo 'index'}}FS{{/linkTo}}</h1>
@@ -23,14 +24,14 @@
       <div id="loading" style="display:none">
         <h2>loading tweets...</h2>
       </div>
-      
+
         {{#each App.searchResultsController.reverse}}
             <ul class="tile">
               <li>              
                 <ol class="tweets">
                   <p>{{linkify text}}</p>
                 </ol>
-                <ol class="screen_name"><h4>{{ user.screen_name }}</h4></ol>
+                <ol class="screen_name"><h4>{{ twitter_user user.screen_name }}</h4></ol>
               </li>
             </ul>
         {{/each}}
