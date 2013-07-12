@@ -1,5 +1,5 @@
 App = Ember.Application.create();
-Ember.LOG_BINDINGS = true;
+
 
 App.Teams = [
         Ember.Object.create({id:1, team:'arsenal',realteam:'Arsenal'}),
@@ -121,7 +121,7 @@ App.searchResultsController=Em.ArrayController.createWithMixins({
 
 
 /**************************
-* Index Routes
+* Handlebar
 **************************/
 
 Ember.Handlebars.registerBoundHelper('linkify', function (text) {
@@ -156,4 +156,15 @@ Ember.Handlebars.registerBoundHelper('twitter_user', function (text) {
     });
     return new Handlebars.SafeString(text);
 });
+
+/**************************
+* Fixing page structure
+**************************/
+
+$(document).ready(function () {
+        var column_height = $("body").height();
+        $(".header").css("height",column_height * 0.85);
+});
+
+
 

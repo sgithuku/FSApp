@@ -1,5 +1,4 @@
 <script type="text/x-handlebars">
-mixpanel.track("Main container");
   <div id="container">
         <div class="header">
           <h1 class="page-header">{{#linkTo 'index'}}FS{{/linkTo}}</h1>
@@ -14,12 +13,8 @@ mixpanel.track("Main container");
           </section>
         </div>
       </div>
-
     <div id="content">
-
-
-
-      <h3><i class="icon-twitter"></i>  What is twitter saying?</h3>
+      <h3><i class="icon-twitter"></i>  Twitter</h3>
 
       <div id="loading" style="display:none">
         <h2>loading tweets...</h2>
@@ -38,14 +33,14 @@ mixpanel.track("Main container");
 
     </div>
     <div id="videoholder">
-    <h3><i class="icon-videocam"></i>  Youtube clips {{#if App.searchResultsController }}of {{App.searchResultsController.query}} {{/if}}</h3>
+    <h3><i class="icon-videocam"></i>  Youtube </h3>
           <div id="videostretch" style="padding-bottom: 0;" >
             <iframe id="video" width="640" height="360" border="0" frameBorder="0" ></iframe>
           </div>
     </div>
 
     <div id="wikipedia">
-    <h3><i class="icon-laptop"></i> What does Wikipedia say?</h3>
+    <h3><i class="icon-laptop"></i> What about Wikipedia?</h3>
     {{#if App.searchResultsController}}
       {{{link "Find out more about " "http://en.wikipedia.org/wiki/Special:Search/" "wikipedia" }}}
     {{/if}}
