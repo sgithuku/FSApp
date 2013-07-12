@@ -79,4 +79,5 @@ FSApp::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   config.ember.variant = :production
+  config.assets.cache_store = :dalli_store
 end
