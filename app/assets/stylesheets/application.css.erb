@@ -49,7 +49,8 @@
       display: block;
       float: left;
       margin-right: 2.35765%;
-      width: 100%; }
+      width: 100%;
+      margin-bottom: 4em; }
       .header .holder section.searchbox:last-child {
         margin-right: 0; }
 
@@ -63,15 +64,14 @@
   width: 100%;
   position: relative;
   float: left;
-  width: 100%;
-  padding: 2.35765%; }
+  width: 100%; }
 
 .header {
   min-height: 520px;
   background-color: #67bf95;
   border-bottom: 1px solid #347c5a;
   color: #fafafa;
-  padding-top: 15%; }
+   }
 
 #content {
   min-height: 20px;
@@ -82,14 +82,15 @@
   float: left;
   width: 100%;
   padding: 2.35765%;
-  background-color: #374953;
-  border-bottom: 1px solid #7e9aa9;
+  background-color: #347c5a;
+  border-top: 1px solid #67bf95;
   color: #347c5a; }
 
 #videoholder {
   min-height: 20px;
   background-color: #292929;
-  position: relative; }
+  position: relative;
+  padding: 2.35765%; }
 
 #wikipedia {
   min-height: 20px;
@@ -100,8 +101,8 @@
   float: left;
   width: 100%;
   padding: 2.35765%;
-  background-color: #374953;
-  border-top: 1px solid #7e9aa9; }
+  background-color: #347c5a;
+  border-top: 1px solid #67bf95; }
 
 footer {
   background-color: #67bf95;
@@ -116,7 +117,8 @@ footer {
 body {
   color: #fafafa;
   font: 14px/1.231 "Lato", sans-serif;
-  margin: 0 !important; }
+  margin: 0 !important;
+  background-color: #67bf95; }
 
 a {
   color: #67bf95;
@@ -138,11 +140,11 @@ a:hover {
 }
 
 #content h4 a:hover{
-  color:#7e9aa9;
+  color:#67bf95;
 }
 
 #content a {
-  color: #374953;
+  color: #347c5a;
 }
 
 h1 {
@@ -196,9 +198,9 @@ h4 {
   margin-top: 4px; }
 
 h5 {
-  font-size: 16px;
-  font-weight: 500;
-  text-transform: uppercase; }
+  font-size: 24px;
+  font-weight: 100;
+  text-transform: lowercase; }
 
 h6 {
   font-size: 13px;
@@ -222,12 +224,14 @@ input {
   vertical-align: baseline;
   display: inline;
   color: #347c5a;
-  min-width: 320px;
+  height: 38px;
   width: 80%;
   line-height: 1.65;
   font-size: 24px;
   border: 0;
   margin: 0;
+  -webkit-appearance: none;
+  -moz-apeparance: none;
   -webkit-font-smoothing: antialiased;
   float: left;
   background-color: white;
@@ -263,19 +267,21 @@ select {
   line-height: 1.65;
   font-size: 24px;
   font-weight: 300;
-  background: #347c5a url(<%= asset_path 'down-arrow.png' %>) top right no-repeat;
+  background: #347c5a url(<%= asset_path 'down-arrow1.png' %>) center right no-repeat;
   color: #fafafa;
   outline: none;
   border: none;
   -webkit-appearance: none;
   -moz-appearance: none;
+  appearance: none;
   padding: 0 10px;
   border-radius: 0;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   text-align: center;
   font-weight: 100;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  display: inline; }
 
 /* tiles */
 #content h3, #videostretch h3 {
@@ -294,8 +300,15 @@ li {
   margin-bottom: 20px;
   margin-right: 20px;
   background: #fafafa;
-  color: #7e9aa9;
-  text-align: left; }
+  color: #292929;
+  text-align: left;
+   }
+
+  li:hover{
+    box-shadow: 6px 6px 0 #1d4633;
+    -moz-box-shadow: 6px 6px 0 #1d4633;
+    -webkit-box-shadow: 6px 6px 0 #1d4633;
+  }
 
 ol {
   margin: 0;
@@ -308,7 +321,7 @@ ol.tweets {
 ol.screen_name {
   display: block;
   height: 30px;
-  background: #7e9aa9; }
+  background: #67bf95; }
 
 li ol p {
   padding: 20px; }
@@ -361,7 +374,7 @@ li ol h4 {
 .btn.btn-large {
   font-size: 24px;
   text-transform: lowercase;
-  line-height: 1.47; }
+  line-height: 1.38; }
 
 /* autofit video */
 #videostretch {
@@ -379,7 +392,7 @@ li ol h4 {
 
 a.wikipedia {
   padding: 30px;
-  background: #347c5a;
+  background: #67bf95;
   color: #fafafa;
   text-align: center;
   border-radius: 5px;
@@ -392,7 +405,7 @@ a.wikipedia {
   font-size: 24px; }
 
 a.wikipedia:hover{
-  background: #67bf95; }
+  color: #347c5a; }
 
 @font-face {
   font-family: 'icons';
@@ -483,4 +496,27 @@ a.wikipedia:hover{
 
 #loading h4{
   padding: 20px 0;
+}
+
+
+/* Previous search terms */
+  .pt{
+    width: 100%;
+    position: relative;
+    float: left;
+    clear: both;
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+ .pt button{
+  white-space: normal;
+  text-transform: capitalize;
+  margin: 1em 2% !important;
+  float: none;
+  padding: 1em;
+  width: 20% !important;
+  height: auto;
+}
+
+.upper{
+  text-transform: capitalize;
 }

@@ -8,8 +8,13 @@
             {{view Ember.Select contentBinding="App.Teams" optionValuePath="content.id" optionLabelPath="content.realteam" selectionBinding="App.Teams.selectedTeam" nameBinding="pretty" }}
           </section>        
           <section class="searchbox">
-            {{view App.SearchTextField placeholder="Search for a football player" valueBinding="App.searchResultsController.query" action="authenticate" target="App.searchResultsController" }}
-            <button {{action "authenticate" target="App.searchResultsController"}} class="btn btn-large"><i class="icon-search-2"></i></button>
+            {{view App.SearchTextField placeholder="Search for a football player" valueBinding="App.searchResultsController.query" action="play" target="App.searchResultsController" }}
+            <button {{action "play" target="App.searchResultsController"}} class="btn btn-large"><i class="icon-search-2"></i></button>
+          </section>
+          <section class="pt">
+            {{#each player in controller }}
+                  <button {{action 'play' target="App.searchResultsController" valueBinding="App.searchResultsController.query" }} class="btn">{{player.name}}</button>
+            {{/each}}
           </section>
         </div>
       </div>
@@ -20,16 +25,18 @@
         <h2>loading tweets...</h2>
       </div>
 
-        {{#each App.searchResultsController.reverse}}
+
+
             <ul class="tile">
+            {{#each App.searchResultsController.reverse}}
               <li>              
                 <ol class="tweets">
                   <p>{{linkify text}}</p>
                 </ol>
                 <ol class="screen_name"><h4>{{ twitter_user user.screen_name }}</h4></ol>
               </li>
-            </ul>
         {{/each}}
+            </ul>
 
     </div>
     <div id="videoholder">
@@ -48,6 +55,8 @@
 
     <footer>
       <p>Have some ideas about how this could be better? Tweet me <a href="http://twitter.com/shaun_g" target="_blank">@shaun_g</a></p>
+
+
     </footer>
   </div>
 </script>

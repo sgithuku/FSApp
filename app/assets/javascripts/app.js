@@ -1,5 +1,35 @@
 App = Ember.Application.create();
 
+Ember.LOG_BINDINGS = true;
+
+App.Store = DS.Store.extend({
+    adapter: 'DS.FixtureAdapter'
+});
+
+
+App.Player = DS.Model.extend({
+    name: DS.attr('string')
+});
+
+App.Player.FIXTURES =[
+    {id:1,name: 'Theo Walcott',count:null},
+    {id:2,name: 'Gervinho',count:null},
+    {id:3,name: 'Gonzalo Higuain',count:null},
+    {id:4,name: 'Yaya Sanogo',count:null},
+    {id:5,name: 'Thiago Alcantara',count:null},
+    {id:6,name: 'Cesc Fabregas',count:null},
+    {id:7,name: 'Edinson Cavani',count:null},
+    {id:8,name: 'Cristiano Ronaldo',count:null}
+];
+
+App.ApplicationRoute = Em.Route.extend({
+    model: function(){
+        return App.Player.find();
+    }
+});
+App.IndexRoute = Em.Route.extend({
+    model: function(){return this.modelFor('application');}
+})
 
 App.Teams = [
         Ember.Object.create({id:1, team:'arsenal',realteam:'Arsenal'}),
@@ -24,16 +54,6 @@ App.Teams = [
         Ember.Object.create({id:20, team:'west_bromwich_albion',realteam:'West Bromwich Albion'}),
             ];
 
-// Search function
-
-// App.SearchTextField = Em.TextField.extend({
-//     insertNewline: function() {
-//         App.Tweets();
-//     }
-// });
-
-
-
 App.Tweet=Em.Object.extend();
 
 /**************************
@@ -44,7 +64,7 @@ App.SearchTextField=Em.TextField.extend({
     insertNewline: function() {
             var value = this.get('value');
             if (value) {
-                App.searchResultsController.authenticate(value);
+                App.searchResultsController.play(value);
                 this.set('value', App.searchResultsController.query);
             }
         }
@@ -84,7 +104,7 @@ App.searchResultsController=Em.ArrayController.createWithMixins({
     //     return this.toArray().filter
     // }
 
-    authenticate: function(){
+    play: function(){
         if (content.length > 0){
             content.clear() && this.removeString(query);
         }
@@ -119,6 +139,14 @@ App.searchResultsController=Em.ArrayController.createWithMixins({
       }
 });
 
+App.CreateController = Em.ArrayController.extend({
+    save: function(){
+        this.get("selectedPlayer.name").createRecord({
+            save: this.get("store").commit()
+        });
+    }
+})
+
 
 /**************************
 * Handlebar
@@ -145,7 +173,7 @@ Handlebars.registerHelper('link', function(text, url, style, source) {
   style = Handlebars.Utils.escapeExpression(style);
   source = Handlebars.Utils.escapeExpression(App.searchResultsController.query);
 
-  var result = '<a class="'+ style +'" href="' + url + source +'">' + text + source +'</a>';
+  var result = '<a class="'+ style +'" href="' + url + source +'">' + text + '<span class="upper">'+ source + '</span>' +'</a>';
 
   return result;
 });
@@ -164,6 +192,8 @@ Ember.Handlebars.registerBoundHelper('twitter_user', function (text) {
 $(document).ready(function () {
         var column_height = $("body").height();
         $(".header").css("height",column_height * 0.85);
+        var row_width = $("body").width();
+        $("ul.tile").css("width",row_width);
 });
 
 
