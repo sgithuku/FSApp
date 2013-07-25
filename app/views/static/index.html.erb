@@ -12,51 +12,56 @@
             <button {{action "play" target="App.searchResultsController"}} class="btn btn-large"><i class="icon-search-2"></i></button>
           </section>
           <section class="pt">
+          <h3>Most popular players</h3>
             {{#each player in controller }}
                   <button {{action 'play' target="App.searchResultsController" valueBinding="App.searchResultsController.query" }} class="btn">{{player.name}}</button>
             {{/each}}
           </section>
         </div>
       </div>
-    <div id="content">
-      <h3><i class="icon-twitter"></i>  Twitter</h3>
-
-      <div id="loading" style="display:none">
-        <h2>loading tweets...</h2>
-      </div>
-
-
-
-            <ul class="tile">
-            {{#each App.searchResultsController.reverse}}
-              <li>              
-                <ol class="tweets">
-                  <p>{{linkify text}}</p>
-                </ol>
-                <ol class="screen_name"><h4>{{ twitter_user user.screen_name }}</h4></ol>
-              </li>
-        {{/each}}
-            </ul>
-
-    </div>
-    <div id="videoholder">
-    <h3><i class="icon-videocam"></i>  Youtube </h3>
-          <div id="videostretch" style="padding-bottom: 0;" >
-            <iframe id="video" width="640" height="360" border="0" frameBorder="0" ></iframe>
-          </div>
-    </div>
-
-    <div id="wikipedia">
-    <h3><i class="icon-laptop"></i> What about Wikipedia?</h3>
-    {{#if App.searchResultsController}}
-      {{{link "Find out more about " "http://en.wikipedia.org/wiki/Special:Search/" "wikipedia" }}}
-    {{/if}}
-    </div>
-
-    <footer>
-      <p>Have some ideas about how this could be better? Tweet me <a href="http://twitter.com/shaun_g" target="_blank">@shaun_g</a></p>
-
-
-    </footer>
+  {{outlet}}      
   </div>
+</script>
+
+<script type="text/x-handlebars" data-template-name="searchResults">
+  <div id="videoholder">
+  <h3><i class="icon-videocam"></i>  Youtube </h3>
+        <div id="videostretch" style="padding-bottom: 0;" >
+          <iframe id="video" width="640" height="360" border="0" frameBorder="0" ></iframe>
+        </div>
+  </div>
+
+  <div id="content">
+    <h3><i class="icon-twitter"></i>  Twitter</h3>
+
+    <div id="loading" style="display:none">
+      <h2>loading tweets...</h2>
+    </div>
+    {{#each App.searchResultsController.reverse}}
+          <ul class="tile">
+            <li>              
+              <ol class="tweets">
+                <p>{{linkify text}}</p>
+              </ol>
+              <ol class="screen_name"><h4>{{ twitter_user user.screen_name }}</h4></ol>
+            </li>
+          </ul>
+          {{/each}}
+
+  </div>
+
+
+  <div id="wikipedia">
+  <h3><i class="icon-laptop"></i> What about Wikipedia?</h3>
+  {{#if App.searchResultsController}}
+    {{{link "Find out more about " "http://en.wikipedia.org/wiki/Special:Search/" "wikipedia" }}}
+  {{/if}}
+  </div>
+
+  <footer>
+    <p>Have some ideas about how this could be better? Tweet me <a href="http://twitter.com/shaun_g" target="_blank">@shaun_g</a></p>
+
+
+  </footer>
+
 </script>

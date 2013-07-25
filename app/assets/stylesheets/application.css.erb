@@ -2,6 +2,11 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:100,300,700);
 @import url(http://fonts.googleapis.com/css?family=Arvo:400);
 
+html{
+  font-size: 62.5%;
+  height: 100%;
+}
+
 /* css file */
 * {
   -webkit-box-sizing: border-box;
@@ -83,7 +88,6 @@
   width: 100%;
   padding: 2.35765%;
   background-color: #347c5a;
-  border-top: 1px solid #67bf95;
   color: #347c5a; }
 
 #videoholder {
@@ -101,8 +105,7 @@
   float: left;
   width: 100%;
   padding: 2.35765%;
-  background-color: #347c5a;
-  border-top: 1px solid #67bf95; }
+  background-color: #292929; }
 
 footer {
   background-color: #67bf95;
@@ -118,7 +121,8 @@ body {
   color: #fafafa;
   font: 14px/1.231 "Lato", sans-serif;
   margin: 0 !important;
-  background-color: #67bf95; }
+  background-color: #67bf95;
+  height: 100%; }
 
 a {
   color: #67bf95;
@@ -148,11 +152,12 @@ a:hover {
 }
 
 h1 {
-  font-size: 60px;
+  font-size: 6rem;
   font-weight: 700;
   text-align: center;
   line-height: 0.6;
-  padding-bottom: 0; }
+  padding-bottom: 0;
+  padding-top: 5%; }
 
 h1 a {
   background: #67bf95;
@@ -177,7 +182,7 @@ h1 a:hover {
 
 h2 {
   font-family: 'Arvo','Lato',sans-serif;
-  font-size: 26px;
+  font-size: 2.6rem;
   font-weight: 400;
   margin-bottom: 2px;
   text-align: center;
@@ -185,7 +190,7 @@ h2 {
 
 h3 {
   font-family: 'Arvo','Lato',sans-serif;
-  font-size: 24px;
+  font-size: 2.4rem;
   font-weight: 700;
   margin-bottom: 4px;
   margin-top: 2px;
@@ -193,17 +198,17 @@ h3 {
   text-transform: uppercase; }
 
 h4 {
-  font-size: 18px;
+  font-size: 1.8em;
   font-weight: 500;
   margin-top: 4px; }
 
 h5 {
-  font-size: 24px;
+  font-size: 2.4rem;
   font-weight: 100;
   text-transform: lowercase; }
 
 h6 {
-  font-size: 13px;
+  font-size: 1.3rem;
   font-weight: 500;
   text-transform: uppercase; }
 
@@ -219,7 +224,7 @@ footer a {
 
 /* form styling */
 input {
-  font: 1em Lato, sans-serif;
+  font: 1rem Lato, sans-serif;
   padding: 0 0 0 10px;
   vertical-align: baseline;
   display: inline;
@@ -405,7 +410,7 @@ a.wikipedia {
   font-size: 24px; }
 
 a.wikipedia:hover{
-  color: #347c5a; }
+  background-color: #347c5a; }
 
 @font-face {
   font-family: 'icons';
@@ -515,6 +520,9 @@ a.wikipedia:hover{
   padding: 1em;
   width: 20% !important;
   height: auto;
+}
+.pt h3{
+  color: #347c5a;
 }
 
 .upper{

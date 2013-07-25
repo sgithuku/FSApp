@@ -1,6 +1,51 @@
-App = Ember.Application.create();
+App = Ember.Application.create({
+    LOG_TRANSITIONS: true
+});
 
 Ember.LOG_BINDINGS = true;
+
+/**************************
+* Routes
+**************************/
+
+App.Router.map(function(){
+    this.route('searchResults')
+});
+
+App.ApplicationRoute = Em.Route.extend({
+    model: function(){
+        return App.Player.find();
+    }
+});
+App.IndexRoute = Em.Route.extend({
+    model: function(){return this.modelFor('application');}
+});
+
+Ember.Route.reopen({
+  enter: function(router) {
+    this._super(router);
+    if(this.get('isLeafRoute')) {
+      var path = this.absoluteRoute(router);
+      mixpanel.track('page viewed', {'page name' : document.title, 'url' : path});
+      _gaq.push(['_trackPageview', path]);
+    }
+  }
+});
+
+App.searchResultsRoute = Ember.Route.extend({
+  setupController: function(controller, model) {
+    controller.set('content', '');
+  },
+  redirect: function() {
+    this.transitionTo('index');
+  }
+
+});
+
+/**************************
+* Models
+**************************/
+
 
 App.Store = DS.Store.extend({
     adapter: 'DS.FixtureAdapter'
@@ -22,14 +67,7 @@ App.Player.FIXTURES =[
     {id:8,name: 'Cristiano Ronaldo',count:null}
 ];
 
-App.ApplicationRoute = Em.Route.extend({
-    model: function(){
-        return App.Player.find();
-    }
-});
-App.IndexRoute = Em.Route.extend({
-    model: function(){return this.modelFor('application');}
-})
+
 
 App.Teams = [
         Ember.Object.create({id:1, team:'arsenal',realteam:'Arsenal'}),
@@ -57,7 +95,7 @@ App.Teams = [
 App.Tweet=Em.Object.extend();
 
 /**************************
-* View
+* Views
 **************************/
 
 App.SearchTextField=Em.TextField.extend({
@@ -74,6 +112,11 @@ App.SearchTextField=Em.TextField.extend({
 App.TweetCountView=Ember.View.extend({
     count:null
 });
+
+App.searchResultsView = Em.View.extend({
+  templateName: 'searchResults'
+});
+
 
 /**************************
 * Controller
@@ -105,16 +148,17 @@ App.searchResultsController=Em.ArrayController.createWithMixins({
     // }
 
     play: function(){
+        var content = this.get('content');
         if (content.length > 0){
-            content.clear() && this.removeString(query);
+            content.clear();
         }
+        App.Router.router.transitionTo('index');
 
         var cb = new Codebird;
         var self=this;
         var query=self.get("query");
         cb.setConsumerKey('bJZupffcmbMpeC0GhromA','QbE611TJ1IbmVQ0rsVJcS2ars5PonaYfnyDsc6NcQbo');
-        document.getElementById("loading").style.display="block";        
-        document.getElementById("videostretch").style.paddingBottom="56.25%";
+
         cb.__call(
             'search_tweets',
             'q='+query+" "+App.Teams.selectedTeam.realteam+"&count=15&include_entities=true&result_type=popular&lang=en",
@@ -124,22 +168,21 @@ App.searchResultsController=Em.ArrayController.createWithMixins({
                                         {
                                             self.addTweet(App.Tweet.create(reply.statuses[i]));
                                         }
-                document.getElementById("loading").style.display="none";
-
             },
             true
         );
 
         /* Youtube video embed */
 
-        var urlY = "http://www.youtube.com/embed?listType=search&&vq=hd720&list="+query;
-        var ifr = document.getElementById('video') ;
-        ifr.src = urlY ;
-        return false ;
+        // var urlY = "http://www.youtube.com/embed?listType=search&&vq=hd720&list="+query;
+        // var ifr = document.getElementById('video') ;
+        // ifr.src = urlY ;
+        // return false;
+        App.Router.router.transitionTo('searchResults');
       }
 });
 
-App.CreateController = Em.ArrayController.extend({
+App.PlayerController = Em.ArrayController.extend({
     save: function(){
         this.get("selectedPlayer.name").createRecord({
             save: this.get("store").commit()
@@ -191,10 +234,7 @@ Ember.Handlebars.registerBoundHelper('twitter_user', function (text) {
 
 $(document).ready(function () {
         var column_height = $("body").height();
-        $(".header").css("height",column_height * 0.85);
+        $(".header").css("height",column_height);
         var row_width = $("body").width();
         $("ul.tile").css("width",row_width);
 });
-
-
-
