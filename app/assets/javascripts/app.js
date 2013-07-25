@@ -53,7 +53,8 @@ App.Store = DS.Store.extend({
 
 
 App.Player = DS.Model.extend({
-    name: DS.attr('string')
+    name: DS.attr('string'),
+    count: DS.attr('number')
 });
 
 App.Player.FIXTURES =[
@@ -66,8 +67,6 @@ App.Player.FIXTURES =[
     {id:7,name: 'Edinson Cavani',count:null},
     {id:8,name: 'Cristiano Ronaldo',count:null}
 ];
-
-
 
 App.Teams = [
         Ember.Object.create({id:1, team:'arsenal',realteam:'Arsenal'}),
@@ -114,9 +113,17 @@ App.TweetCountView=Ember.View.extend({
 });
 
 App.searchResultsView = Em.View.extend({
-  templateName: 'searchResults'
+    didInsertElement: function(){
+       //called on creation
+       this.$().hide().fadeIn(400);
+      },
+      willDestroyElement: function(){
+       //called on destruction
+       this.$().slideDown(250);
+      }
 });
 
+App.PlayerView = Em.View.extend();
 
 /**************************
 * Controller
@@ -127,6 +134,7 @@ App.searchResultsController=Em.ArrayController.createWithMixins({
     tweet_count:'',
     query: '',
     parameter:null,
+    Loading: false,
 
     addTweet: function(tweet) {
     // The `id` from Twitter's JSON
@@ -143,11 +151,11 @@ App.searchResultsController=Em.ArrayController.createWithMixins({
         return this.toArray().reverse();
     }.property('@each'),
 
-    // clean: function(){
-    //     return this.toArray().filter
-    // }
-
     play: function(){
+        var self=this;
+        var Loading = this.get('Loading');
+        this.set('Loading',true);
+
         var content = this.get('content');
         if (content.length > 0){
             content.clear();
@@ -155,7 +163,6 @@ App.searchResultsController=Em.ArrayController.createWithMixins({
         App.Router.router.transitionTo('index');
 
         var cb = new Codebird;
-        var self=this;
         var query=self.get("query");
         cb.setConsumerKey('bJZupffcmbMpeC0GhromA','QbE611TJ1IbmVQ0rsVJcS2ars5PonaYfnyDsc6NcQbo');
 
@@ -175,10 +182,12 @@ App.searchResultsController=Em.ArrayController.createWithMixins({
         /* Youtube video embed */
 
         // var urlY = "http://www.youtube.com/embed?listType=search&&vq=hd720&list="+query;
-        // var ifr = document.getElementById('video') ;
+        // var ifr = $('#video')[0] ;
         // ifr.src = urlY ;
         // return false;
+
         App.Router.router.transitionTo('searchResults');
+        self.set('Loading',false);
       }
 });
 
@@ -223,7 +232,7 @@ Handlebars.registerHelper('link', function(text, url, style, source) {
 
 Ember.Handlebars.registerBoundHelper('twitter_user', function (text) {
     text = text.replace(/.*/g, function (s) {
-        return '<a target="_blank" href="http://twitter.com/' + s + '">' + s + '</a>';
+        return '<a target="_blank" href="http://twitter.com/' + s + '">'+ s + '</a>';
     });
     return new Handlebars.SafeString(text);
 });

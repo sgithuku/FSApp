@@ -11,12 +11,12 @@
             {{view App.SearchTextField placeholder="Search for a football player" valueBinding="App.searchResultsController.query" action="play" target="App.searchResultsController" }}
             <button {{action "play" target="App.searchResultsController"}} class="btn btn-large"><i class="icon-search-2"></i></button>
           </section>
-          <section class="pt">
-          <h3>Most popular players</h3>
-            {{#each player in controller }}
-                  <button {{action 'play' target="App.searchResultsController" valueBinding="App.searchResultsController.query" }} class="btn">{{player.name}}</button>
-            {{/each}}
-          </section>
+          {{#if App.searchResultsController.Loading}}
+            <section>
+              <h2>Loading data..</h2>
+            </section>
+          {{/if}}
+
         </div>
       </div>
   {{outlet}}      
