@@ -13,11 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require moment
 //= require handlebars
 //= require ember
 //= require ember-data
 //= require_self
-//= require ember-animate
 //= require codebird
 //= require sha1
 //= require app

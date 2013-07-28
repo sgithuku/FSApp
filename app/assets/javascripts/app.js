@@ -1,5 +1,8 @@
 App = Ember.Application.create({
-    LOG_TRANSITIONS: true
+    LOG_TRANSITIONS: true,
+    selectedVideo: null,
+    LOG_ACTIVE_GENERATION: true,
+    LOG_VIEW_LOOKUPS: true
 });
 
 Ember.LOG_BINDINGS = true;
@@ -12,11 +15,6 @@ App.Router.map(function(){
     this.route('searchResults')
 });
 
-App.ApplicationRoute = Em.Route.extend({
-    model: function(){
-        return App.Player.find();
-    }
-});
 App.IndexRoute = Em.Route.extend({
     model: function(){return this.modelFor('application');}
 });
@@ -35,10 +33,13 @@ Ember.Route.reopen({
 App.searchResultsRoute = Ember.Route.extend({
   setupController: function(controller, model) {
     controller.set('content', '');
+    this._super.apply(this, arguments);
+
   },
   redirect: function() {
     this.transitionTo('index');
-  }
+  },
+
 
 });
 
@@ -93,16 +94,20 @@ App.Teams = [
 
 App.Tweet=Em.Object.extend();
 
+
+
 /**************************
 * Views
 **************************/
+
+
 
 App.SearchTextField=Em.TextField.extend({
     insertNewline: function() {
             var value = this.get('value');
             if (value) {
-                App.searchResultsController.play(value);
-                this.set('value', App.searchResultsController.query);
+                var query = this.get('value');
+                    App.searchResultsController.play(query);
             }
         }
 });
@@ -115,7 +120,6 @@ App.TweetCountView=Ember.View.extend({
 App.searchResultsView = Em.View.extend({
     didInsertElement: function(){
        //called on creation
-       this.$().hide().fadeIn(400);
       },
       willDestroyElement: function(){
        //called on destruction
@@ -123,7 +127,15 @@ App.searchResultsView = Em.View.extend({
       }
 });
 
-App.PlayerView = Em.View.extend();
+// App.searchResultsView = Ember.View.reopen({
+//     $: function(){
+//         if(window.billy){debugger;}
+//         return this._super.apply(this,arguments);
+//     }
+// });
+
+
+
 
 /**************************
 * Controller
@@ -162,6 +174,7 @@ App.searchResultsController=Em.ArrayController.createWithMixins({
         }
         App.Router.router.transitionTo('index');
 
+        /* twitter search */
         var cb = new Codebird;
         var query=self.get("query");
         cb.setConsumerKey('bJZupffcmbMpeC0GhromA','QbE611TJ1IbmVQ0rsVJcS2ars5PonaYfnyDsc6NcQbo');
@@ -179,30 +192,28 @@ App.searchResultsController=Em.ArrayController.createWithMixins({
             true
         );
 
-        /* Youtube video embed */
 
-        // var urlY = "http://www.youtube.com/embed?listType=search&&vq=hd720&list="+query;
-        // var ifr = $('#video')[0] ;
-        // ifr.src = urlY ;
-        // return false;
+        
 
         App.Router.router.transitionTo('searchResults');
-        self.set('Loading',false);
+        var complete = function(){self.set('Loading',false);};
+        complete();
+
       }
 });
 
-App.PlayerController = Em.ArrayController.extend({
-    save: function(){
-        this.get("selectedPlayer.name").createRecord({
-            save: this.get("store").commit()
-        });
-    }
-})
+
 
 
 /**************************
 * Handlebar
 **************************/
+Ember.Handlebars.registerBoundHelper('youtube',function(query){
+    urlY = "http://www.youtube.com/embed?listType=search&&vq=hd720&list="+query;
+    var result = '<iframe id="video" width="640" height="360" border="0" frameBorder="0" src="'+ urlY +'"></iframe>';
+    return new Handlebars.SafeString(result);
+});
+
 
 Ember.Handlebars.registerBoundHelper('linkify', function (text) {
     text = text.replace(/(https?:\/\/\S+)/gi, function (s) {
@@ -235,6 +246,11 @@ Ember.Handlebars.registerBoundHelper('twitter_user', function (text) {
         return '<a target="_blank" href="http://twitter.com/' + s + '">'+ s + '</a>';
     });
     return new Handlebars.SafeString(text);
+});
+
+
+Ember.Handlebars.registerBoundHelper('dateFormat', function(context) {
+    return moment(Date(context)).fromNow();
 });
 
 /**************************

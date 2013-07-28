@@ -25,10 +25,10 @@
 
 <script type="text/x-handlebars" data-template-name="searchResults">
   <div id="videoholder">
-  <h3><i class="icon-videocam"></i>  Youtube </h3>
-        <div id="videostretch" style="padding-bottom: 0;" >
-          <iframe id="video" width="640" height="360" border="0" frameBorder="0" ></iframe>
-        </div>
+    <h3><i class="icon-videocam"></i>  Youtube </h3>
+    <div id="videostretch">
+      {{{youtube App.searchResultsController.query}}}
+    </div>  
   </div>
 
   <div id="content">
@@ -41,9 +41,9 @@
           <ul class="tile">
             <li>              
               <ol class="tweets">
-                <p>{{linkify text}}</p>
+                <p>{{ twitter_user user.screen_name }}: {{linkify text}}</p>
               </ol>
-              <ol class="screen_name"><h4>{{ twitter_user user.screen_name }}</h4></ol>
+              <ol class="screen_name"><h4>{{dateFormat created_at}}</h4></ol>
             </li>
           </ul>
           {{/each}}
