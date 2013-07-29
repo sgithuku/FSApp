@@ -181,7 +181,7 @@ App.searchResultsController=Em.ArrayController.createWithMixins({
 
         cb.__call(
             'search_tweets',
-            'q='+query+" "+App.Teams.selectedTeam.realteam+"&count=15&include_entities=true&result_type=popular&lang=en",
+            'q='+query+" "+App.Teams.selectedTeam.realteam+"&count=15&include_entities=false&result_type=popular&lang=en",
             function(reply){
                 
                 for (var i = 0; i < reply.statuses.length; i++) 
@@ -249,8 +249,8 @@ Ember.Handlebars.registerBoundHelper('twitter_user', function (text) {
 });
 
 
-Ember.Handlebars.registerBoundHelper('dateFormat', function(context) {
-    return moment(Date(context)).fromNow();
+Ember.Handlebars.registerBoundHelper('dateFormat', function(text) {
+    return moment(text).twitterLong();
 });
 
 /**************************

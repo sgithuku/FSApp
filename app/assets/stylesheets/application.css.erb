@@ -86,7 +86,8 @@ html{
   position: relative;
   float: left;
   width: 100%;
-  padding: 2.35765%;
+  padding-top: 2.35765%;
+  padding-bottom: 2.35765%;
   background-color: #347c5a;
   color: #347c5a; }
 
@@ -220,7 +221,8 @@ footer a {
   color: #fafafa; }
 
 .holder {
-  margin-top: 7.5%; }
+  margin-top: 7.5%;
+  width: 80%; }
 
 /* form styling */
 input {
@@ -296,14 +298,17 @@ ul, li, ol {
   list-style: none;
   list-style-type: none; }
 
+.tile{
+  left: 50%;
+}
 li {
   position: relative;
   float: left;
   display: inline;
-  width: 240px;
+  width: 200px;
   overflow: hidden;
-  margin-bottom: 20px;
-  margin-right: 20px;
+  margin-bottom: 6px;
+  margin-right: 6px;
   background: #fafafa;
   color: #34383e;
   text-align: left;
@@ -327,18 +332,20 @@ ol {
 
 ol.tweets {
   display: block;
-  height: 120px; }
+  height: auto; }
+
 
 ol.screen_name {
   display: block;
+  float: left;
+  clear: left;
+  position: relative;
   height: 30px;
-  background: #67bf95; }
+  background: #67bf95;
+  width: 100%; }
 
 li ol p {
-  padding: 20px; }
-
-li ol img {
-  border-radius: 50%; }
+  padding: 0 20px; }
 
 li ol h4 {
   color: #fafafa;

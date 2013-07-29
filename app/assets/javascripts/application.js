@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require moment
+//= require moment-twitter
 //= require handlebars
 //= require ember
 //= require ember-data
