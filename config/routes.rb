@@ -1,6 +1,17 @@
 FSApp::Application.routes.draw do
+  resources :fsapps
+
   get "static/index"
   root :to => 'static#index'
+
+  fsapps::Application.routes.draw do
+    namespace :api do
+        resources :fsapps
+      end
+    end
+
+    root "ember#start"
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

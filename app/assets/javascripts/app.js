@@ -49,25 +49,18 @@ App.searchResultsRoute = Ember.Route.extend({
 
 
 App.Store = DS.Store.extend({
-    adapter: 'DS.FixtureAdapter'
+    adapter: 'DS.RESTAdapter'
 });
 
 
 App.Player = DS.Model.extend({
     name: DS.attr('string'),
-    count: DS.attr('number')
+    text: DS.attr('string'),
+    birthplace: DS.attr('string'),
+    age: DS.attr('number'),
+    position: DS.attr('string'),
+    image: DS.attr('string'),
 });
-
-App.Player.FIXTURES =[
-    {id:1,name: 'Theo Walcott',count:null},
-    {id:2,name: 'Gervinho',count:null},
-    {id:3,name: 'Gonzalo Higuain',count:null},
-    {id:4,name: 'Yaya Sanogo',count:null},
-    {id:5,name: 'Thiago Alcantara',count:null},
-    {id:6,name: 'Cesc Fabregas',count:null},
-    {id:7,name: 'Edinson Cavani',count:null},
-    {id:8,name: 'Cristiano Ronaldo',count:null}
-];
 
 App.Teams = [
         Ember.Object.create({id:1, team:'arsenal',realteam:'Arsenal'}),
