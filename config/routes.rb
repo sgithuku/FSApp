@@ -1,4 +1,6 @@
 FSApp::Application.routes.draw do
+  resources :players
+
   get "static/index"
   root :to => 'static#index'
   # The priority is based upon order of creation: first created -> highest priority.
